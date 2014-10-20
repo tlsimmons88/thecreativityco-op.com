@@ -1,0 +1,41 @@
+.controller,
+.environment {
+	margin-bottom: 30px;
+}
+
+.controller {
+
+	&__action {
+
+		&--item {
+			margin: 10px 5px;
+		}
+
+		&--sub-actions {
+			margin: 15px 0;
+		}
+
+		&--sub-heading {
+			font-style: italic;
+			margin-left: 6px;
+		}
+
+	}
+
+	&__columns {
+		display: table;
+		width: 100%;
+	}
+
+	&__column {
+		box-sizing: border-box;
+		display: table-cell;
+		padding: 0 10px;
+	}
+
+	&__title {
+		color: #b0b0b0;
+		font-weight: 700;
+	}
+
+}

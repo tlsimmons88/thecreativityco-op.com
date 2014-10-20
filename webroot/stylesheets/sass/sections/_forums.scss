@@ -1,0 +1,18 @@
+.deleted-topic {
+	text-decoration: line-through;
+}
+
+ol {
+	margin: 0;
+	
+	&.sortable{
+		li div {
+			border: 1px solid #000;
+			padding: 3px;
+			margin: 3px;
+		}
+		&.sortable ol {
+			margin-left: 25px;
+		}
+	}
+}

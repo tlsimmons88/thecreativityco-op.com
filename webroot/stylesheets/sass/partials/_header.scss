@@ -1,0 +1,17 @@
+.logo {
+	display: block;
+	@include font-size(0);
+	margin: 30px auto 45px auto;
+	max-width: 234px;
+	text-indent: -9999em;
+	width: 100%;
+
+	&:after {
+		background: image-url('header/logo.png');
+		background-size: contain;
+		content: ' ';
+		display: block;
+		padding-bottom: 85px / 234px * 100%;
+	}
+
+}

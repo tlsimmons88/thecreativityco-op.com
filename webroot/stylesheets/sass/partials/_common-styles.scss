@@ -1,0 +1,62 @@
+%button--grey {
+	background-color: #f0f0f0;
+	background-image: linear-gradient(0deg, rgba(#221f1f, 0.01), rgba(#fff, 0.09));
+	border: 1px solid rgba(#000, 0.11);
+	box-shadow:
+		inset 0 1px 0 rgba(#fff, 0.67),
+		0 1px 2px rgba(#000, 0.08);
+	color: #6a6a6a; //b0b0b0
+	text-shadow: 0 1px 0 #fff;
+	transition: background-color 0.25s, box-shadow 0.25s;
+
+	&:hover {
+		background-color: lighten(#f0f0f0, 4%);
+	}
+
+	&:active {
+		background-color: darken(#f0f0f0, 4%);
+		box-shadow: inset 0 1px 2px rgba(#000, 0.05);
+	}
+
+}
+
+%button--green {
+	background-color: #65b687;
+	background-image: linear-gradient(0deg, rgba(#304037, 0.05), rgba(#a2ffca, 0.07));
+	border: 1px solid rgba(#508f6a, 0.9);
+	box-shadow:
+		inset 0 1px 0 rgba(#fff, 0.27),
+		0 1px 2px rgba(#000, 0.08);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(#508f6a, 0.9);
+	transition: background-color 0.25s, box-shadow 0.25s;
+
+	&:hover {
+		background-color: saturate(lighten(#65b687, 7%), 5%);
+	}
+
+	&:active {
+		background-color: darken(#65b687, 8%);
+		box-shadow: inset 0 1px 2px rgba(#000, 0.05);
+	}
+
+}
+
+%button--reveal {
+	border: 2px solid transparent;
+	border-radius: 4px;
+	transition: border 0.25s;
+
+	&:hover {
+		border: 2px solid rgba(#000, 0.05);
+	}
+
+}
+
+%stacked-label__label {
+	color: darken(#d2d2d4, 25%);
+	@include font-size(9.5px);
+	font-weight: 600;
+	letter-spacing: 0.3px;
+	text-transform: uppercase;
+}

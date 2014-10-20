@@ -1,0 +1,16 @@
+.new-betakeys {
+	&.is-hidden {
+		display: none;
+	}
+
+	ul {
+		color: #3366ff;
+		background: #ebebeb;
+	}
+
+	&.loading {
+		ul {
+			background: image-url('ui/loader.gif') center center no-repeat;
+		}
+	}
+}

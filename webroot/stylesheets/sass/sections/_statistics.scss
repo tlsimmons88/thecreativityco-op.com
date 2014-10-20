@@ -1,0 +1,18 @@
+.statistics {
+
+	.datepicker {
+		display: none;
+	}
+
+	.datepicker-is-visible .datepicker {
+		animation-duration: 1s;
+		animation-name: fadeIn;
+		display: table-cell;
+	}
+}
+.detail_swatch {
+	float: right;
+	display: table;
+	width: 20px;
+	height: 20px;
+}

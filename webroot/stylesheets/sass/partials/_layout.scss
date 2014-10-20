@@ -1,0 +1,29 @@
+html,
+body {
+	height: 100%;
+}
+
+.container {
+	display: table;
+	min-height: 100%;
+	width: 100%;
+
+	.sidebar,
+	.content {
+		box-sizing: border-box;
+		display: table-cell;
+		min-height: 100%;
+		vertical-align: top;
+	}
+
+	.sidebar {
+		max-width: 260px;
+		min-width: 220px;
+		width: (260px / 1120px) * 100%;
+	}
+
+	.content {
+		width: auto;
+	}
+
+}

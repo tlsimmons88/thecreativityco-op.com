@@ -1,0 +1,53 @@
+table {
+
+	tbody {
+
+		td {
+
+			&.commodities__icon {
+
+				&:before {
+					height: 18px;
+					width: 16px;
+				}
+
+				@each $item in $commodities {
+
+					&--#{$item} {
+
+						&:before {
+							background: image-url('commodities/icons/#{$item}-small.png') center center no-repeat;
+						}
+
+					}
+
+				}
+
+			}
+
+			&.crafting__icon {
+
+				&:before {
+					height: 16px;
+					width: 16px;
+				}
+
+				@each $item in $crafting-items {
+
+					&--#{$item} {
+
+						&:before {
+							background: image-url('crafting-items/icons/#{$item}-small.png') center center no-repeat;
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,1 +1,5 @@
 /nbproject
+node_modules/
+.sass-cache/
+**/sass/gruntfile.js
+**/sass/package.json

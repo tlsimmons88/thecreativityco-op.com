@@ -1,0 +1,499 @@
+// custom stuff
+
+.chart-wrapper {
+	position: relative;
+	padding: 20px;
+}
+
+#chart {
+	position: relative;
+	left: 40px;
+}
+
+.y_axis {
+	position: absolute;
+	top: 20px;
+	bottom: 100%;
+	width: 40px;
+}
+
+#x_axis {
+	position: absolute;
+	height: 40px;
+	left: 40px;
+	bottom: -40px;
+}
+
+// base styles
+
+$color_0: #e0e0e0;
+$color_1: #808080;
+$color_2: #404040;
+
+%extend_1 {
+	stroke: rgba(#000, 0.16);
+	stroke-width: 2px;
+	shape-rendering: crisp-edges;
+	pointer-events: none;
+}
+
+%extend_2 {
+	z-index: -1;
+	stroke: rgba(#000, 0.20);
+	stroke-width: 1px;
+	stroke-dasharray: 1 1;
+}
+
+%extend_3 {
+	opacity: 0.5;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+%extend_4 {
+	fill: black;
+	color: black;
+	text-shadow: -1px 1px 0 rgba(#fff, 0.1),
+		1px -1px 0 rgba(#fff, 0.1),
+		1px 1px 0 rgba(#fff, 0.1),
+		0 1px 0 rgba(#fff, 0.1),
+		0 -1px 0 rgba(#fff, 0.1),
+		1px 0 0 rgba(#fff, 0.1),
+		-1px 0 0 rgba(#fff, 0.1),
+		-1px -1px 0 rgba(#fff, 0.1);
+}
+
+%extend_5 {
+	fill: white;
+	color: white;
+	text-shadow: -1px 1px 0 rgba(#000, 0.8),
+		1px -1px 0 rgba(#000, 0.8),
+		1px 1px 0 rgba(#000, 0.8),
+		0 1px 0 rgba(#000, 0.8),
+		0 -1px 0 rgba(#000, 0.8),
+		1px 0 0 rgba(#000, 0.8),
+		-1px 0 0 rgba(#000, 0.8),
+		-1px -1px 0 rgba(#000, 0.8);
+}
+
+.rickshaw_graph {
+
+	.detail {
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		background: rgba(#000, 0.1);
+		bottom: 0;
+		width: 1px;
+		transition: opacity 0.25s linear;
+
+		&.inactive {
+			opacity: 0;
+		}
+
+		.item {
+			position: absolute;
+			z-index: 2;
+			border-radius: 3px;
+			padding: 0.25em;
+			font-size: 12px;
+			font-family: Arial, sans-serif;
+			opacity: 0;
+			background: rgba(#000, 0.4);
+			color: white;
+			border: 1px solid rgba(#000, 0.4);
+			margin-left: 1em;
+			margin-right: 1em;
+			margin-top: -1em;
+			white-space: nowrap;
+
+			&.active {
+				opacity: 1;
+				background: rgba(#000, 0.8);
+			}
+
+			&.left {
+				left: 0;
+
+				&:after {
+					top: 1em;
+					left: -5px;
+					margin-top: -5px;
+					border-right-color: rgba(#000, 0.8);
+					border-left-width: 0;
+				}
+
+			}
+
+			&.right {
+				right: 0;
+
+				&:after {
+					top: 1em;
+					right: -5px;
+					margin-top: -5px;
+					border-left-color: rgba(#000, 0.8);
+					border-right-width: 0;
+				}
+
+			}
+
+			&:after {
+				position: absolute;
+				display: block;
+				width: 0;
+				height: 0;
+				content: "";
+				border: 5px solid transparent;
+			}
+
+		}
+
+		.x_label {
+			font-family: Arial, sans-serif;
+			border-radius: 3px;
+			padding: 6px;
+			opacity: 0.5;
+			border: 1px solid $color_0;
+			font-size: 12px;
+			position: absolute;
+			background: white;
+			white-space: nowrap;
+
+			&.left {
+				left: 0;
+			}
+
+			&.right {
+				right: 0;
+			}
+
+		}
+
+		.dot {
+			width: 4px;
+			height: 4px;
+			margin-left: -3px;
+			margin-top: -3.5px;
+			border-radius: 5px;
+			position: absolute;
+			box-shadow: 0 0 2px rgba(#000, 0.6);
+			box-sizing: content-box;
+			background: white;
+			border-width: 2px;
+			border-style: solid;
+			display: none;
+			background-clip: padding-box;
+
+			&.active {
+				display: block;
+			}
+
+		}
+
+	}
+
+	position: relative;
+
+	svg {
+		display: block;
+		overflow: hidden;
+	}
+
+	.x_tick {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 0px;
+		border-left: 1px dotted rgba(#000, 0.2);
+		pointer-events: none;
+
+		.title {
+			position: absolute;
+			font-size: 12px;
+			font-family: Arial, sans-serif;
+			opacity: 0.5;
+			white-space: nowrap;
+			margin-left: 3px;
+			bottom: 1px;
+		}
+
+		&.glow .title {
+			@extend %extend_4;
+		}
+
+		&.inverse .title {
+			@extend %extend_5;
+		}
+
+	}
+
+	.annotation_line {
+		position: absolute;
+		top: 0;
+		bottom: -6px;
+		width: 0px;
+		border-left: 2px solid rgba(#000, 0.3);
+		display: none;
+
+		&.active {
+			display: block;
+		}
+
+	}
+
+	.annotation_range {
+		background: rgba(#000, 0.1);
+		display: none;
+		position: absolute;
+		top: 0;
+		bottom: -6px;
+
+		&.active {
+			display: block;
+
+			&.offscreen {
+				display: none;
+			}
+
+		}
+
+	}
+
+	.y_axis {
+		fill: none;
+	}
+
+	.y_ticks {
+
+		path {
+			fill: none;
+			stroke: $color_1;
+		}
+
+		text {
+			@extend %extend_3;
+		}
+
+		.tick line {
+			@extend %extend_1;
+		}
+
+		&.glow text {
+			@extend %extend_4;
+		}
+
+		&.inverse text {
+			@extend %extend_5;
+		}
+
+	}
+
+	.x_ticks_d3 {
+
+		.tick {
+			@extend %extend_1;
+		}
+
+		path {
+			fill: none;
+			stroke: $color_1;
+		}
+
+		text {
+			@extend %extend_3;
+		}
+
+	}
+
+	.y_grid {
+
+		.tick {
+			@extend %extend_2;
+		}
+
+		.tick[data-y-value="0"] {
+			stroke-dasharray: 1 0;
+		}
+
+		path {
+			fill: none;
+			stroke: none;
+		}
+
+	}
+
+	.x_grid_d3 {
+
+		.tick {
+			@extend %extend_2;
+		}
+
+		path {
+			fill: none;
+			stroke: none;
+		}
+
+	}
+
+	 .x_axis_d3 {
+		fill: none;
+	}
+
+}
+
+.rickshaw_annotation_timeline {
+	height: 1px;
+	border-top: 1px solid $color_0;
+	margin-top: 10px;
+	position: relative;
+
+	.annotation {
+		position: absolute;
+		height: 6px;
+		width: 6px;
+		margin-left: -2px;
+		top: -3px;
+		border-radius: 5px;
+		background-color: rgba(#000, 0.25);
+
+		.content {
+			background: white;
+			color: black;
+			opacity: 0.9;
+			padding: 5px 5px;
+			box-shadow: 0 0 2px rgba(#000, 0.8);
+			border-radius: 3px;
+			position: relative;
+			z-index: 20;
+			font-size: 12px;
+			/* (2) padding was set before: old value: 5px 5px - new value 6px 8px 8px */;
+			top: 18px;
+			left: -11px;
+			width: 160px;
+			display: none;
+			cursor: pointer;
+
+			&:before {
+				content: "\25b2";
+				position: absolute;
+				top: -11px;
+				color: white;
+				text-shadow: 0 -1px 1px rgba(#000, 0.8);
+			}
+
+			&:hover {
+				z-index: 50;
+			}
+
+		}
+
+		&.active {
+			background-color: rgba(#000, 0.8);
+			cursor: none;
+
+			.content {
+				display: block;
+			}
+
+		}
+
+		&:hover {
+			background-color: rgba(#000, 0.8);
+			cursor: none;
+
+			.content {
+				display: block;
+				z-index: 50;
+			}
+
+		}
+
+	}
+
+}
+
+.rickshaw_legend {
+	display: block;
+	position: relative;
+
+	&:hover {
+		z-index: 10;
+	}
+
+	.swatch {
+		width: 10px;
+		height: 10px;
+		border: 1px solid rgba(#000, 0.2);
+	}
+
+	.line {
+		clear: both;
+		line-height: 140%;
+		padding-right: 15px;
+
+		.swatch {
+			display: inline-block;
+			margin-right: 3px;
+			border-radius: 2px;
+		}
+
+		&.disabled {
+			opacity: 0.4;
+		}
+
+	}
+
+	.label {
+		margin: 0;
+		white-space: nowrap;
+		display: inline;
+		font-size: inherit;
+		background-color: transparent;
+		color: inherit;
+		font-weight: normal;
+		line-height: normal;
+		padding: 0px;
+		text-shadow: none;
+	}
+
+	.action {
+		margin-right: 0.2em;
+		font-size: 10px;
+		opacity: 0.2;
+		cursor: pointer;
+		/* (3) font-size was set before: old value: 10px - new value 14px */;
+
+		&:hover {
+			opacity: 0.6;
+		}
+
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		/* (4) margin was set before: old value: 0 - new value 2px */;
+		cursor: pointer;
+	}
+
+	li {
+		padding: 0 0 0 2px;
+		min-width: 80px;
+		white-space: nowrap;
+
+		&:hover {
+			background: rgba(#fff, 0.08);
+			border-radius: 3px;
+		}
+
+		&:active {
+			background: rgba(#fff, 0.2);
+			border-radius: 3px;
+		}
+
+	}
+
+}
