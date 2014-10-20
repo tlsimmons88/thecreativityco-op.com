@@ -1,27 +1,65 @@
+<?php
+$this->load->helper('html');
+?>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
-<head>
-	<?php echo $head; ?>
-</head>
-<body class="<?php echo $body_class; ?>">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<?php 
+			if (isset($description))
+			{
+		?>
+		<meta name="description" content="<?=$description?>" />
+		<?php
+			}
+			else
+			{
+		?>
+		<meta name="description" content="@TODO Default Descrtiption." />
+		<?php
+			}
+		?>
+		<title><?=$title_for_layout?></title>
+		<?php
+			$jsTags = array(
+				'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+				'/javascript/bootstrap.min.js',
+				'/javascript/scripts.js?' . filemtime(FCPATH . 'javascript/scripts.js')
+			);
+			$cssTags = array(
+				'/stylesheets/font-awesome.css',
+				'/stylesheets/bootstrap.css',
+				'/stylesheets/bootstrap-responsive.css',
+				'/stylesheets/screen.css?' . filemtime(FCPATH . 'stylesheets/screen.css')
+			);
+			foreach($jsTags as $tag)
+			{
+				?>
+		<script src="<?=$tag?>"></script>
+			<?php
+			}
+			foreach($cssTags as $tag)
+			{
+				?>
+		<link href="<?=$tag?>" rel="stylesheet">
+			<?php
+			}
+		?>
+	</head>
 
-	<header>
-		<?php echo $header; ?>
-	</header>
+	<body class="<?php echo $body_class; ?>">
+		<header>
+			<?php echo $header; ?>
+		</header>
 
-	<div class="container">
-		<?php echo $content; ?>
-	</div>
+		<div class="container">
+			<?php echo $content; ?>
+		</div>
 
-	<hr>
+		<hr>
 
-	<footer class="container" style="text-align:center">
-		<p>Copyright &copy; The Creativity Co-Op - All rights reserved</p>
-	</footer>
-
-</body>
+		<footer class="container" style="text-align:center">
+			<p>Copyright &copy; The Creativity Co-Op - All rights reserved</p>
+		</footer>
+	</body>
 </html>
