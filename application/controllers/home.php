@@ -11,7 +11,13 @@ class Home extends CI_Controller {
 		//Sets the variable $header to use the slice header (/views/slices/header.php)
 		$this->stencil->slice('header');
 	}
-
+	public function index()
+	{
+		$this->layout->setTitle('Super Title');
+		$this->layout->setDescription("That's right bitches, I make my own code.");
+		$this->layout->render();
+	}
+/*
 	public function index()
 	{
 		//Sets the variable $title to be used in your views
@@ -31,6 +37,7 @@ class Home extends CI_Controller {
 		//home_view is located here: /views/pages/home_view.php
 		$this->stencil->paint('home_view');
 	}
+*/
 
 	//Example of using a different Layout
 	public function subpage()
