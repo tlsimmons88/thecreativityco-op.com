@@ -1,0 +1,1 @@
+[25-Oct-2014 05:48:29 UTC] PHP Parse error:  syntax error, unexpected '$route' (T_VARIABLE) in /home/creativitycoop/public_html/application/config/routes.php on line 41

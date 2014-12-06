@@ -1,0 +1,97 @@
+a:hover{
+	color: #0066CC;
+	text-decoration:underline;
+}
+
+#about_span{
+	cursor:pointer;
+	color:#007fff;
+}
+
+#about_span:hover{
+	color: #0066CC;
+	text-decoration:underline;
+}
+
+#activities_container{
+	text-align: center;
+}
+
+.activities_div{
+	vertical-align: middle;
+	width: 200px;
+	height: 200px;
+	margin: 3px;
+	border: #000 solid 1px;
+	cursor: pointer;
+}
+
+#blue_div{
+	background-image: url("/assets/img/logo_blue.png");
+    background-repeat: no-repeat;
+	background-size: contain;
+}
+
+body {
+    background-color: #cdcdcd;
+}
+
+.bold {
+	 font-weight: bold;
+}
+
+.center{
+	text-align: center;
+}
+
+#contact_span{
+	cursor:pointer;
+	color:#007fff;
+}
+
+#contact_span:hover{
+	color: #0066CC;
+	text-decoration:underline;
+}
+
+#green_div{
+	background-image: url("/assets/img/logo_green.png");
+    background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.inline {
+    display: inline-block;
+}
+
+#logo_div{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 25%;
+	width: 25%;
+	display:block;
+    margin:auto;
+}
+
+#nav_bar{
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#orange_div{
+	background-image: url("/assets/img/logo_orange.png");
+    background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#pink_data_div{
+	text-align: left;
+	margin: 20px;
+}
+
+#pink_div{
+	background-image: url("/assets/img/logo_pink.png");
+    background-repeat: no-repeat;
+	background-size: contain;
+}
